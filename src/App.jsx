@@ -8,6 +8,8 @@ import Dashboard from './pages/motorista/Dashboard'
 import Alunos from './pages/motorista/Alunos'
 import AlunoForm from './pages/motorista/AlunoForm'
 import AlunoDetail from './pages/motorista/AlunoDetail'
+import Rotas from './pages/motorista/Rotas'
+import RotaExec from './pages/motorista/RotaExec'
 
 function Protected({ children }) {
   const { user, loading } = useAuth()
@@ -34,7 +36,8 @@ export default function App() {
         <Route path="/alunos/novo" element={<AlunoForm />} />
         <Route path="/alunos/:id" element={<AlunoDetail />} />
         <Route path="/alunos/:id/editar" element={<AlunoForm />} />
-        <Route path="/rotas" element={<EmBreve titulo="Rotas & GPS" />} />
+        <Route path="/rotas" element={<Rotas />} />
+        <Route path="/rotas/:id/executar" element={<RotaExec />} />
         <Route path="/financeiro" element={<EmBreve titulo="Financeiro" />} />
         <Route path="/assistente" element={<EmBreve titulo="Assistente IA" />} />
         <Route path="/config" element={<EmBreve titulo="Configurações" />} />
