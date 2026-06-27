@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext'
-import { Spinner, EmptyState } from './components/ui'
-import { Construction } from 'lucide-react'
+import { Spinner } from './components/ui'
 import AppShell from './components/layout/AppShell'
 import Login from './pages/Login'
 import Dashboard from './pages/motorista/Dashboard'
@@ -10,6 +9,11 @@ import AlunoForm from './pages/motorista/AlunoForm'
 import AlunoDetail from './pages/motorista/AlunoDetail'
 import Rotas from './pages/motorista/Rotas'
 import RotaExec from './pages/motorista/RotaExec'
+import Financeiro from './pages/motorista/Financeiro'
+import Comunicacao from './pages/motorista/Comunicacao'
+import Assistente from './pages/motorista/Assistente'
+import Config from './pages/motorista/Config'
+import PaisView from './pages/pais/PaisView'
 
 function Protected({ children }) {
   const { user, loading } = useAuth()
@@ -18,18 +22,11 @@ function Protected({ children }) {
   return children
 }
 
-function EmBreve({ titulo }) {
-  return (
-    <EmptyState icon={Construction} title={`${titulo} — em construção`}>
-      Este módulo entra nas próximas fases do KeepVan. A navegação e a base já estão prontas.
-    </EmptyState>
-  )
-}
-
 export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/pais" element={<PaisView />} />
       <Route element={<Protected><AppShell /></Protected>}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/alunos" element={<Alunos />} />
@@ -38,9 +35,10 @@ export default function App() {
         <Route path="/alunos/:id/editar" element={<AlunoForm />} />
         <Route path="/rotas" element={<Rotas />} />
         <Route path="/rotas/:id/executar" element={<RotaExec />} />
-        <Route path="/financeiro" element={<EmBreve titulo="Financeiro" />} />
-        <Route path="/assistente" element={<EmBreve titulo="Assistente IA" />} />
-        <Route path="/config" element={<EmBreve titulo="Configurações" />} />
+        <Route path="/financeiro" element={<Financeiro />} />
+        <Route path="/comunicacao" element={<Comunicacao />} />
+        <Route path="/assistente" element={<Assistente />} />
+        <Route path="/config" element={<Config />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

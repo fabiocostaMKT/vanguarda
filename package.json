@@ -1,9 +1,9 @@
 {
-  "name": "keepvan",
+  "name": "vanguarda",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "KeepVan — plataforma de gestão de transporte escolar (KeepCoding).",
+  "description": "VanGuarda — plataforma de gestão de transporte escolar (KeepCoding).",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

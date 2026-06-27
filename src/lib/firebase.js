@@ -19,7 +19,7 @@ if (DATA_MODE === 'firebase') {
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
   }
   if (!cfg.apiKey) {
-    console.warn('[KeepVan] VITE_DATA_MODE=firebase mas as chaves não estão definidas.')
+    console.warn('[VanGuarda] VITE_DATA_MODE=firebase mas as chaves não estão definidas.')
   } else {
     app = initializeApp(cfg)
     auth = getAuth(app)

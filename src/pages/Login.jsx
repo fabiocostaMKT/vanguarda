@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { Bus, Mail, Lock } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { Button, Field, Input } from '../components/ui'
@@ -32,7 +32,7 @@ export default function Login() {
       <div className="relative hidden flex-col justify-between bg-brand-800 p-10 text-white md:flex">
         <div className="flex items-center gap-2">
           <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/15"><Bus className="h-6 w-6" /></div>
-          <span className="text-2xl font-extrabold">KeepVan</span>
+          <span className="text-2xl font-extrabold">VanGuarda</span>
         </div>
         <div>
           <h1 className="text-4xl font-extrabold leading-tight">O transporte escolar,<br />sob controle.</h1>
@@ -50,7 +50,7 @@ export default function Login() {
           <div className="mb-8 md:hidden">
             <div className="flex items-center gap-2">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-700 text-white"><Bus className="h-6 w-6" /></div>
-              <span className="text-2xl font-extrabold">Keep<span className="text-brand-600">Van</span></span>
+              <span className="text-2xl font-extrabold">Van<span className="text-brand-600">Guarda</span></span>
             </div>
           </div>
           <h2 className="text-2xl font-bold">Entrar</h2>
@@ -80,6 +80,10 @@ export default function Login() {
               Modo demonstração — entre com qualquer e-mail e senha.
             </p>
           )}
+          <p className="mt-4 text-center text-sm">
+            <Link to="/pais" className="font-medium text-brand-600">Ver o app dos pais (demo) →</Link>
+          </p>
+          <p className="mt-1 text-center text-xs muted">É responsável? Acesse pelo link de convite do motorista.</p>
         </form>
       </div>
     </div>

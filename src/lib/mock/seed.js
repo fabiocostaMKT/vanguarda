@@ -13,7 +13,7 @@ export function makeSeed() {
     nome: 'Carlos Eduardo Ramos',
     cpf: '123.456.789-00',
     telefone: '(32) 99980-1204',
-    email: 'carlos@keepvan.app',
+    email: 'carlos@vanguarda.app',
     cnh: { numero: '01234567890', categoria: 'D', vencimento: '2027-08-15' },
     veiculo: { marca: 'Mercedes-Benz', modelo: 'Sprinter', ano: 2021, placa: 'RKV-2E26', cor: 'Branca', capacidade: 20 },
     cidade: 'Juiz de Fora', estado: 'MG',

@@ -1,4 +1,4 @@
-# KeepVan 🚐
+# VanGuarda 🚐
 
 Plataforma SaaS de gestão de transporte escolar — **KeepCoding**.
 Conecta **motoristas** de van escolar e **pais/responsáveis** num só app (PWA):

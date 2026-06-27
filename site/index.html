@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>KeepVan — o app que coloca o transporte escolar no controle</title>
-<meta name="description" content="KeepVan: gestão completa de van escolar. GPS ao vivo, cobrança no Pix, comunicação com os pais e IA. Feito pra motoristas de Juiz de Fora e Zona da Mata." />
-<meta property="og:title" content="KeepVan — transporte escolar sob controle" />
+<title>VanGuarda — o app que coloca o transporte escolar no controle</title>
+<meta name="description" content="VanGuarda: gestão completa de van escolar. GPS ao vivo, cobrança no Pix, comunicação com os pais e IA. Feito pra motoristas de Juiz de Fora e Zona da Mata." />
+<meta property="og:title" content="VanGuarda — transporte escolar sob controle" />
 <meta property="og:description" content="GPS ao vivo, Pix automático, app dos pais e IA. Teste grátis por 30 dias." />
 <meta name="theme-color" content="#1d4ed8" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='12' y='20' width='34' height='20' rx='4' fill='%23fbbf24'/%3E%3Crect x='46' y='26' width='9' height='14' rx='3' fill='%23fbbf24'/%3E%3Ccircle cx='22' cy='44' r='5' fill='%230f172a'/%3E%3Ccircle cx='46' cy='44' r='5' fill='%230f172a'/%3E%3C/svg%3E" />
@@ -42,7 +42,7 @@ tailwind.config = {
       <div class="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 6v6m0 0H4m4 0h12M4 12V8a2 2 0 012-2h9l5 5v1M6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
       </div>
-      <span class="text-xl font-extrabold tracking-tight">Keep<span class="text-brand-600">Van</span></span>
+      <span class="text-xl font-extrabold tracking-tight">Van<span class="text-brand-600">Guarda</span></span>
     </div>
     <nav class="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
       <a href="#recursos" class="hover:text-brand-700">Recursos</a>
@@ -217,10 +217,10 @@ tailwind.config = {
 <footer class="bg-slate-900 py-10 text-slate-400">
   <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm md:flex-row">
     <div class="flex items-center gap-2 text-white">
-      <span class="text-lg font-extrabold">Keep<span class="text-brand-400">Van</span></span>
+      <span class="text-lg font-extrabold">Van<span class="text-brand-400">Guarda</span></span>
       <span class="text-slate-500">· por KeepCoding</span>
     </div>
-    <p>© 2026 KeepVan · Transporte escolar inteligente · Juiz de Fora/MG</p>
+    <p>© 2026 VanGuarda · Transporte escolar inteligente · Juiz de Fora/MG</p>
   </div>
 </footer>
 
@@ -228,17 +228,17 @@ tailwind.config = {
   // ── WhatsApp ────────────────────────────────────────────────
   const WA = '5532999430013';
   const wa = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
-  const MSG = 'Olá! Tenho uma van escolar e quero conhecer o KeepVan. Pode me ajudar?';
+  const MSG = 'Olá! Tenho uma van escolar e quero conhecer o VanGuarda. Pode me ajudar?';
   ['waFloat','navCta','heroCta','waLink'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa(MSG); });
   document.querySelectorAll('.planCta').forEach(a => {
-    a.href = wa(`Olá! Quero testar o KeepVan no plano ${a.dataset.plan}. Pode me explicar como começar?`);
+    a.href = wa(`Olá! Quero testar o VanGuarda no plano ${a.dataset.plan}. Pode me explicar como começar?`);
   });
 
   // ── Formulário → WhatsApp com mensagem pronta ───────────────
   document.getElementById('leadForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const f = e.target;
-    const msg = `Olá! Sou ${f.nome.value} e quero conhecer o KeepVan.\nMeu WhatsApp: ${f.tel.value}\nTransporto: ${f.alunos.value} alunos.`;
+    const msg = `Olá! Sou ${f.nome.value} e quero conhecer o VanGuarda.\nMeu WhatsApp: ${f.tel.value}\nTransporto: ${f.alunos.value} alunos.`;
     window.open(wa(msg), '_blank');
   });
 

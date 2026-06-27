@@ -1,5 +1,5 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, Users, Route as RouteIcon, Wallet, Sparkles, Settings, LogOut, Bus } from 'lucide-react'
+import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom'
+import { LayoutDashboard, Users, Route as RouteIcon, Wallet, MessageCircle, Sparkles, Settings, LogOut, Bus } from 'lucide-react'
 import { clsx } from 'clsx'
 import { useAuth } from '../../contexts/AuthContext'
 import { Avatar } from '../ui'
@@ -9,7 +9,8 @@ const NAV = [
   { to: '/alunos', label: 'Alunos', icon: Users },
   { to: '/rotas', label: 'Rotas', icon: RouteIcon },
   { to: '/financeiro', label: 'Financeiro', icon: Wallet },
-  { to: '/assistente', label: 'Assistente', icon: Sparkles },
+  { to: '/comunicacao', label: 'Conversas', icon: MessageCircle },
+  { to: '/assistente', label: 'IA', icon: Sparkles },
 ]
 
 export default function AppShell() {
@@ -33,7 +34,7 @@ export default function AppShell() {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex items-center justify-between border-b border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-4 py-3 md:hidden">
           <Brand />
-          <Avatar name={user?.nome} />
+          <Link to="/config"><Avatar name={user?.nome} /></Link>
         </header>
         <main className="flex-1 p-4 pb-24 md:p-8 md:pb-8">
           <div className="mx-auto max-w-6xl">
@@ -62,7 +63,7 @@ function Brand() {
   return (
     <div className="flex items-center gap-2">
       <div className="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white"><Bus className="h-5 w-5" /></div>
-      <div className="text-lg font-extrabold tracking-tight">Keep<span className="text-brand-600">Van</span></div>
+      <div className="text-lg font-extrabold tracking-tight">Van<span className="text-brand-600">Guarda</span></div>
     </div>
   )
 }

@@ -4,7 +4,7 @@
 import { DATA_MODE } from '../lib/firebase'
 import { makeSeed } from '../lib/mock/seed'
 
-const KEY = 'keepvan_db_v1'
+const KEY = 'vanguarda_db_v1'
 const delay = (ms = 180) => new Promise((r) => setTimeout(r, ms))
 const uid = (p) => p + Math.random().toString(36).slice(2, 9)
 
@@ -47,6 +47,14 @@ export const repo = {
   async getRota(id) { await delay(); return load().rotas.find((r) => r.id === id) || null },
 
   async listMensalidades() { await delay(); return load().mensalidades },
+  async marcarMensalidadePaga(id) {
+    await delay()
+    const db = load()
+    db.mensalidades = db.mensalidades.map((m) =>
+      m.id === id ? { ...m, status: 'pago', paidAt: new Date().toISOString() } : m)
+    save(db)
+    return db.mensalidades.find((m) => m.id === id)
+  },
   async listDespesas() { await delay(); return load().despesas },
   async listNotificacoes() { await delay(); return load().notificacoes },
 
@@ -77,5 +85,5 @@ export const repo = {
 if (DATA_MODE === 'firebase') {
   // TODO(fase produção): substituir cada método por queries Firestore
   // (collection/doc/getDocs/setDoc) respeitando as Security Rules por motorista.
-  console.info('[KeepVan] modo firebase — repositório Firestore a implementar.')
+  console.info('[VanGuarda] modo firebase — repositório Firestore a implementar.')
 }

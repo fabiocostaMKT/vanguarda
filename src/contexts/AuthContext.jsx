@@ -3,7 +3,7 @@ import { DATA_MODE } from '../lib/firebase'
 import { repo } from '../data/repo'
 
 const AuthContext = createContext(null)
-const SESSION_KEY = 'keepvan_session'
+const SESSION_KEY = 'vanguarda_session'
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
