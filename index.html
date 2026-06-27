@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>VanGuarda — o app que coloca o transporte escolar no controle</title>
+<meta name="description" content="VanGuarda: gestão completa de van escolar. GPS ao vivo, cobrança no Pix, comunicação com os pais e IA. Feito pra motoristas de Juiz de Fora e Zona da Mata." />
+<meta property="og:title" content="VanGuarda — transporte escolar sob controle" />
+<meta property="og:description" content="GPS ao vivo, Pix automático, app dos pais e IA. Teste grátis por 30 dias." />
+<meta name="theme-color" content="#1d4ed8" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='12' y='20' width='34' height='20' rx='4' fill='%23fbbf24'/%3E%3Crect x='46' y='26' width='9' height='14' rx='3' fill='%23fbbf24'/%3E%3Ccircle cx='22' cy='44' r='5' fill='%230f172a'/%3E%3Ccircle cx='46' cy='44' r='5' fill='%230f172a'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
+    colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554' } },
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: all .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+<!-- WhatsApp flutuante -->
+<a id="waFloat" href="#" target="_blank" rel="noopener"
+   class="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-green-500 px-5 py-3.5 font-semibold text-white shadow-xl shadow-green-500/30 transition hover:scale-105 hover:bg-green-600">
+  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  Falar no WhatsApp
+</a>
+
+<!-- Nav -->
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+    <div class="flex items-center gap-2">
+      <div class="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 6v6m0 0H4m4 0h12M4 12V8a2 2 0 012-2h9l5 5v1M6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+      </div>
+      <span class="text-xl font-extrabold tracking-tight">Van<span class="text-brand-600">Guarda</span></span>
+    </div>
+    <nav class="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
+      <a href="#recursos" class="hover:text-brand-700">Recursos</a>
+      <a href="#como" class="hover:text-brand-700">Como funciona</a>
+      <a href="#planos" class="hover:text-brand-700">Planos</a>
+      <a href="app/" class="hover:text-brand-700">Demonstração</a>
+    </nav>
+    <a id="navCta" href="#" target="_blank" rel="noopener" class="rounded-xl bg-brand-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-800">Quero testar</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative overflow-hidden bg-gradient-to-b from-white to-brand-50">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
+    <div class="reveal">
+      <span class="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">🚐 Feito pra van escolar de Juiz de Fora & Zona da Mata</span>
+      <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+        O transporte escolar,<br /><span class="text-brand-700">sob controle.</span>
+      </h1>
+      <p class="mt-5 max-w-md text-lg text-slate-600">
+        Alunos, rotas com GPS ao vivo, cobrança no Pix e comunicação com os pais — tudo num app só.
+        Pare de gerenciar a van no caderno e no grupo de WhatsApp.
+      </p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a id="heroCta" href="#" target="_blank" rel="noopener" class="rounded-xl bg-green-500 px-6 py-3.5 text-center font-semibold text-white shadow-lg shadow-green-500/30 transition hover:bg-green-600">Testar grátis por 30 dias</a>
+        <a href="app/" class="rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-center font-semibold text-slate-700 transition hover:border-brand-400 hover:text-brand-700">Ver demonstração →</a>
+      </div>
+      <p class="mt-4 text-sm text-slate-500">Sem cartão de crédito · Suporte humano local · Cancele quando quiser</p>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="reveal flex justify-center">
+      <div class="relative w-[270px] rounded-[2.5rem] border-[10px] border-slate-900 bg-slate-900 shadow-2xl">
+        <div class="overflow-hidden rounded-[1.8rem] bg-white">
+          <div class="bg-brand-800 px-4 pb-6 pt-5 text-white">
+            <p class="text-xs text-brand-200">Olá, Carlos 👋</p>
+            <p class="text-lg font-bold">Sua operação hoje</p>
+          </div>
+          <div class="-mt-3 space-y-3 rounded-t-2xl bg-white p-4">
+            <div class="grid grid-cols-2 gap-2">
+              <div class="rounded-xl bg-slate-50 p-3"><p class="text-2xl font-bold text-brand-700">7</p><p class="text-xs text-slate-500">Alunos ativos</p></div>
+              <div class="rounded-xl bg-slate-50 p-3"><p class="text-2xl font-bold text-green-600">R$ 1.260</p><p class="text-xs text-slate-500">Recebido</p></div>
+            </div>
+            <div class="rounded-xl bg-brand-50 p-3">
+              <div class="flex items-center justify-between"><span class="text-xs font-semibold text-brand-700">🚐 Manhã — Zona Sul</span><span class="text-xs text-slate-500">06:20</span></div>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-brand-200"><div class="h-1.5 w-2/3 rounded-full bg-brand-600"></div></div>
+              <p class="mt-1.5 text-[11px] text-slate-500">2 embarcados · chega em ~8 min</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-xl border border-slate-200 p-2.5">
+              <div class="grid h-8 w-8 place-items-center rounded-full bg-amber-100 text-xs font-bold text-amber-700">PH</div>
+              <span class="flex-1 text-xs font-medium">Pedro embarcou</span>
+              <span class="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-semibold text-green-700">✓ avisado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dor -->
+<section class="mx-auto max-w-6xl px-5 py-16">
+  <div class="reveal mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-extrabold">Dirigir já é trabalho demais.</h2>
+    <p class="mt-3 text-slate-600">O motorista faz tudo sozinho — e no papel. O resultado todo mundo conhece:</p>
+  </div>
+  <div class="reveal mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="text-2xl">😵‍💫</p><p class="mt-2 font-semibold">WhatsApp lotado</p><p class="mt-1 text-sm text-slate-500">Dezenas de pais perguntando "já vem?" o tempo todo.</p></div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="text-2xl">💸</p><p class="mt-2 font-semibold">Inadimplência</p><p class="mt-1 text-sm text-slate-500">Cobrança no caderno, mensalidade que some, conversa chata.</p></div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="text-2xl">📍</p><p class="mt-2 font-semibold">Pais ansiosos</p><p class="mt-1 text-sm text-slate-500">Ninguém sabe onde a van está nem a que horas chega.</p></div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="text-2xl">🗒️</p><p class="mt-2 font-semibold">Tudo no papel</p><p class="mt-1 text-sm text-slate-500">Presença, rotas e ficha do aluno espalhados e perdidos.</p></div>
+  </div>
+</section>
+
+<!-- Recursos -->
+<section id="recursos" class="bg-white py-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-sm font-bold uppercase tracking-wide text-brand-600">A solução</span>
+      <h2 class="mt-2 text-3xl font-extrabold">Tudo que a van precisa, num app só</h2>
+    </div>
+    <div class="reveal mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">🛰️</div><h3 class="font-bold">GPS ao vivo</h3><p class="mt-1.5 text-sm text-slate-600">Rota em tempo real, ETA e check-in automático por geofence. Os pais acompanham a van pelo celular.</p></div>
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">💳</div><h3 class="font-bold">Cobrança no Pix</h3><p class="mt-1.5 text-sm text-slate-600">Pix gerado e enviado sozinho, lembrete automático e baixa na hora. Adeus inadimplência.</p></div>
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">🔔</div><h3 class="font-bold">Pais avisados</h3><p class="mt-1.5 text-sm text-slate-600">Embarque, desembarque e van chegando — notificação automática por app e WhatsApp.</p></div>
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">👧</div><h3 class="font-bold">Alunos & presença</h3><p class="mt-1.5 text-sm text-slate-600">Ficha completa, contato de emergência, carteirinha com QR Code e chamada digital.</p></div>
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">📊</div><h3 class="font-bold">Financeiro claro</h3><p class="mt-1.5 text-sm text-slate-600">Receita, despesas e lucro do mês num painel só. Saiba quanto a van realmente rende.</p></div>
+      <div class="rounded-2xl border border-slate-200 p-6"><div class="mb-3 grid h-12 w-12 place-items-center rounded-xl bg-brand-100 text-2xl">✨</div><h3 class="font-bold">Assistente com IA</h3><p class="mt-1.5 text-sm text-slate-600">Escreve cobranças e comunicados pros pais e resume seu financeiro. Exclusivo do mercado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Como funciona -->
+<section id="como" class="py-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="reveal mx-auto max-w-2xl text-center"><h2 class="text-3xl font-extrabold">Comece em minutos</h2></div>
+    <div class="reveal mt-12 grid gap-8 md:grid-cols-3">
+      <div class="text-center"><div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand-700 text-xl font-bold text-white">1</div><h3 class="mt-4 font-bold">Cadastre alunos e rotas</h3><p class="mt-1.5 text-sm text-slate-600">Em poucos toques você monta sua operação.</p></div>
+      <div class="text-center"><div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand-700 text-xl font-bold text-white">2</div><h3 class="mt-4 font-bold">Convide os pais</h3><p class="mt-1.5 text-sm text-slate-600">Um link no WhatsApp e eles já acompanham a van.</p></div>
+      <div class="text-center"><div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand-700 text-xl font-bold text-white">3</div><h3 class="mt-4 font-bold">Rode com tranquilidade</h3><p class="mt-1.5 text-sm text-slate-600">GPS, cobrança e avisos no automático.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Planos -->
+<section id="planos" class="bg-white py-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-extrabold">Planos que cabem na van</h2>
+      <p class="mt-3 text-slate-600">30 dias grátis em qualquer plano. Sem fidelidade.</p>
+    </div>
+    <div class="reveal mt-12 grid gap-6 md:grid-cols-3">
+      <!-- Básico -->
+      <div class="flex flex-col rounded-2xl border border-slate-200 p-7">
+        <h3 class="font-bold">Básico</h3>
+        <p class="mt-3 text-4xl font-extrabold">R$ 79<span class="text-base font-medium text-slate-500">/mês</span></p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>✅ Até 20 alunos · 2 rotas</li><li>✅ GPS e check-in</li><li>✅ Pix integrado</li><li>✅ App dos pais</li>
+        </ul>
+        <a data-plan="Básico" href="#" target="_blank" rel="noopener" class="planCta mt-7 rounded-xl border border-brand-600 px-5 py-3 text-center font-semibold text-brand-700 transition hover:bg-brand-50">Começar</a>
+      </div>
+      <!-- Pro (destaque) -->
+      <div class="relative flex flex-col rounded-2xl border-2 border-brand-600 bg-brand-50 p-7 shadow-xl shadow-brand-600/10">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-slate-900">MAIS POPULAR</span>
+        <h3 class="font-bold">Pro</h3>
+        <p class="mt-3 text-4xl font-extrabold">R$ 129<span class="text-base font-medium text-slate-500">/mês</span></p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>✅ Até 40 alunos · rotas ilimitadas</li><li>✅ Tudo do Básico</li><li>✅ WhatsApp Business</li><li>✅ Contratos digitais</li><li>✅ Relatórios</li>
+        </ul>
+        <a data-plan="Pro" href="#" target="_blank" rel="noopener" class="planCta mt-7 rounded-xl bg-brand-700 px-5 py-3 text-center font-semibold text-white transition hover:bg-brand-800">Começar</a>
+      </div>
+      <!-- Premium -->
+      <div class="flex flex-col rounded-2xl border border-slate-200 p-7">
+        <h3 class="font-bold">Premium</h3>
+        <p class="mt-3 text-4xl font-extrabold">R$ 179<span class="text-base font-medium text-slate-500">/mês</span></p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>✅ Alunos ilimitados</li><li>✅ Tudo do Pro</li><li>✅ Assistente IA</li><li>✅ Otimização de rotas</li><li>✅ Suporte prioritário</li>
+        </ul>
+        <a data-plan="Premium" href="#" target="_blank" rel="noopener" class="planCta mt-7 rounded-xl border border-brand-600 px-5 py-3 text-center font-semibold text-brand-700 transition hover:bg-brand-50">Começar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="bg-brand-800 py-16 text-white">
+  <div class="mx-auto grid max-w-5xl items-center gap-10 px-5 md:grid-cols-2">
+    <div class="reveal">
+      <h2 class="text-3xl font-extrabold">Quer ver na sua van?</h2>
+      <p class="mt-3 max-w-md text-brand-100">Deixe seu contato que a gente te chama no WhatsApp e faz uma demonstração sem compromisso. Atendimento humano, aqui da região.</p>
+      <div class="mt-6 space-y-2 text-brand-100">
+        <p>📱 WhatsApp: <a id="waLink" href="#" target="_blank" rel="noopener" class="font-semibold text-white underline">(32) 99943-0013</a></p>
+        <p>📍 Juiz de Fora & Zona da Mata — MG</p>
+      </div>
+    </div>
+    <form id="leadForm" class="reveal rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
+      <label class="mb-1 block text-sm font-medium">Seu nome</label>
+      <input name="nome" required class="mb-4 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30" placeholder="Como podemos te chamar?" />
+      <label class="mb-1 block text-sm font-medium">Seu WhatsApp</label>
+      <input name="tel" required class="mb-4 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30" placeholder="(32) 9…" />
+      <label class="mb-1 block text-sm font-medium">Quantos alunos você transporta?</label>
+      <select name="alunos" class="mb-5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30">
+        <option>Até 15</option><option>16 a 30</option><option>Mais de 30</option>
+      </select>
+      <button type="submit" class="w-full rounded-xl bg-green-500 px-5 py-3.5 font-semibold text-white transition hover:bg-green-600">Falar no WhatsApp agora</button>
+      <p class="mt-3 text-center text-xs text-slate-500">Abre o WhatsApp com sua mensagem pronta. 😊</p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 py-10 text-slate-400">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm md:flex-row">
+    <div class="flex items-center gap-2 text-white">
+      <span class="text-lg font-extrabold">Van<span class="text-brand-400">Guarda</span></span>
+      <span class="text-slate-500">· por KeepCoding</span>
+    </div>
+    <p>© 2026 VanGuarda · Transporte escolar inteligente · Juiz de Fora/MG</p>
+  </div>
+</footer>
+
+<script>
+  // ── WhatsApp ────────────────────────────────────────────────
+  const WA = '5532999430013';
+  const wa = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  const MSG = 'Olá! Tenho uma van escolar e quero conhecer o VanGuarda. Pode me ajudar?';
+  ['waFloat','navCta','heroCta','waLink'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa(MSG); });
+  document.querySelectorAll('.planCta').forEach(a => {
+    a.href = wa(`Olá! Quero testar o VanGuarda no plano ${a.dataset.plan}. Pode me explicar como começar?`);
+  });
+
+  // ── Formulário → WhatsApp com mensagem pronta ───────────────
+  document.getElementById('leadForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const msg = `Olá! Sou ${f.nome.value} e quero conhecer o VanGuarda.\nMeu WhatsApp: ${f.tel.value}\nTransporto: ${f.alunos.value} alunos.`;
+    window.open(wa(msg), '_blank');
+  });
+
+  // ── Reveal on scroll ────────────────────────────────────────
+  const io = new IntersectionObserver((es) => es.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
