@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Tokens semânticos (tema claro/escuro via classe .dark no <html>) ── */
+:root {
+  --bg: 248 250 252;          /* slate-50  */
+  --surface: 255 255 255;
+  --surface-2: 241 245 249;   /* slate-100 */
+  --border: 226 232 240;      /* slate-200 */
+  --text: 15 23 42;           /* slate-900 */
+  --text-muted: 100 116 139;  /* slate-500 */
+  --brand: 29 78 216;         /* brand-700 */
+  --brand-fg: 255 255 255;
+  --success: 22 163 74;
+  --warning: 217 119 6;
+  --danger: 220 38 38;
+}
+.dark {
+  --bg: 11 18 32;
+  --surface: 17 25 40;
+  --surface-2: 30 41 59;
+  --border: 39 51 73;
+  --text: 226 232 240;
+  --text-muted: 148 163 184;
+  --brand: 59 130 246;
+  --brand-fg: 255 255 255;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border bg-[rgb(var(--surface))] border-[rgb(var(--border))] shadow-card;
+  }
+  .input {
+    @apply w-full rounded-xl border bg-[rgb(var(--surface))] border-[rgb(var(--border))]
+           px-3.5 py-2.5 text-sm outline-none transition
+           placeholder:text-[rgb(var(--text-muted))]
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30;
+  }
+  .label { @apply mb-1.5 block text-sm font-medium text-[rgb(var(--text))]; }
+  .muted { @apply text-[rgb(var(--text-muted))]; }
+}
+
+/* safe-area pra bottom-nav no mobile (notch) */
+.pb-safe { padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem); }
